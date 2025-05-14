@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Hacker - Nome Dev</title>
+
+    <!-- Importando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Importando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="bg-black text-green-400 flex items-center justify-center min-h-screen font-mono relative">
+
+    <!-- Efeito Matrix -->
+    <canvas id="matrixCanvas" class="absolute top-0 left-0 w-full h-full pointer-events-none"></canvas>
+
+    <section class="max-w-3xl w-full bg-gray-900 p-8 rounded-xl shadow-lg border border-green-500 relative overflow-hidden">
+
+        <!-- Efeito glitch no fundo -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-20 pointer-events-none"
+            style="background-image: url('https://wallpaperaccess.com/full/285408.jpg');"></div>
+
+        <!-- Título -->
+        <header class="text-center mb-6">
+            <h1 class="text-4xl font-bold animate-pulse text-green-300 tracking-widest">
+                <i class="fa-solid fa-user-secret text-green-500"></i> Cyber Hacker 🚀
+            </h1>
+        </header>
+
+        <article class="flex flex-col md:flex-row items-center gap-6">
+            <!-- Imagem do Hacker -->
+            <figure class="md:w-1/2 flex justify-center">
+                <img src="./img/hacker2.png" alt="Hacker"
+                    class="w-auto h-auto transition transform hover:scale-125 shadow-lg"
+                    style="width: 400px; height: 400px;">
+            </figure>
+
+            <!-- Área de Interação -->
+            <div class="md:w-1/2 space-y-4">
+                <div class="flex flex-col">
+                    <label class="text-lg"><i class="fa-solid fa-id-badge text-yellow-400"></i> Insira seu nome:</label>
+                    <input type="text" id="nomeInput" placeholder="Digite seu nome..."
+                        class="w-full p-3 rounded-lg bg-gray-800 text-green-400 border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-300">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-lg"><i class="fa-solid fa-calendar-day text-blue-400"></i> Dia do nascimento:</label>
+                    <input type="number" id="diaInput" min="1" max="31"
+                        class="w-full p-3 rounded-lg bg-gray-800 text-green-400 border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-300">
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-lg"><i class="fa-solid fa-calendar-alt text-red-400"></i> Escolha o mês:</label>
+                    <select id="mesInput"
+                        class="w-full p-3 rounded-lg bg-gray-800 text-green-400 border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-300">
+                        <option value="">Selecione...</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Fevereiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-lg"><i class="fa-solid fa-calendar text-green-400"></i> Ano de nascimento:</label>
+                    <input type="number" id="anoInput" min="1925" max="2025"
+                        class="w-full p-3 rounded-lg bg-gray-800 text-green-400 border border-green-500 focus:outline-none focus:ring-2 focus:ring-green-300">
+                </div>
+
+                <!-- Botões -->
+                <div class="flex flex-col space-y-3">
+                    <button type="button" onclick="gerarNomeDev()"
+                        class="w-full bg-green-500 hover:bg-green-700 text-black font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fa-solid fa-user-ninja text-black"></i> Hackear Nome Dev
+                    </button>
+
+                    <button type="button" onclick="limparCampos()"
+                        class="w-full bg-red-500 hover:bg-red-700 text-black font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 shadow-lg">
+                        <i class="fa-solid fa-trash-alt text-white"></i> Resetar Sistema
+                    </button>
+                </div>
+            </div>
+        </article>
+
+        <!-- Resultado -->
+        <section id="resultado"
+            class="mt-6 text-lg text-yellow-400 font-bold bg-gray-800 p-5 rounded-lg border border-green-500 shadow-lg transition transform hover:scale-105 text-center">
+        </section>
+
+    </section>
+
+    <!-- Importando o JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
