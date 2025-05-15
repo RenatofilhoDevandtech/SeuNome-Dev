@@ -5,10 +5,12 @@ const audioStartup = new Audio("https://assets.mixkit.co/active_storage/sfx/222/
 const audioDigitar = new Audio("https://www.soundjay.com/button/beep-07.wav");
 audioDigitar.volume = 0.3;
 
-// Toca som de inicialização ao carregar a página
-window.onload = function () {
-    audioStartup.play();
-};
+// Toca som de inicialização após interação do usuário
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("click", () => {
+        audioStartup.play();
+    }, { once: true });
+});
 
 // Função para verificar se o ano é bissexto
 function ehAnoBissexto(ano) {
@@ -63,25 +65,16 @@ function gerarNomeDev() {
         nomeDev = "Programador(a)";
     } else if (ultimoDigito === 6 || ultimoDigito === 7 || ultimoDigito === 8) {
         nomeDev = "Estagiário(a)";
-    } else if (ultimoDigito === 9 || ultimoDigito === 0) {
+    } else {
         nomeDev = "Senior";
     }
 
-    let complemento = "";
-    switch (mes) {
-        case 1: complemento = "Bugado(a) 🛠️"; break;
-        case 2: complemento = "do CTRL, CTRL V ⚡"; break;
-        case 3: complemento = "das Gambiarras 🔥"; break;
-        case 4: complemento = "que culpa o Cache 🔄"; break;
-        case 5: complemento = "que esquece o que faz 🤯"; break;
-        case 6: complemento = "do Git Vazio 📂"; break;
-        case 7: complemento = "das Try/Catch vazia 😵"; break;
-        case 8: complemento = "Famosinho do LinkedIn 👨‍💻"; break;
-        case 9: complemento = "Caçador de Bugs 🐛"; break;
-        case 10: complemento = "do Windows Pirata 💀"; break;
-        case 11: complemento = "do Update sem WHERE 🔥"; break;
-        case 12: complemento = "do Commit Bugado 🚀"; break;
-    }
+    let complemento = [
+        "Bugado(a) 🛠️", "do CTRL, CTRL V ⚡", "das Gambiarras 🔥", "que culpa o Cache 🔄",
+        "que esquece o que faz 🤯", "do Git Vazio 📂", "das Try/Catch vazia 😵",
+        "Famosinho do LinkedIn 👨‍💻", "Caçador de Bugs 🐛", "do Windows Pirata 💀",
+        "do Update sem WHERE 🔥", "do Commit Bugado 🚀"
+    ][mes - 1];
 
     resultadoDiv.innerHTML = "";
     let textoFinal = `🔓 Acesso concedido... <br><br>
@@ -117,6 +110,8 @@ function limparCampos() {
     document.getElementById("anoInput").value = "";
     document.getElementById("resultado").innerHTML = "";
 }
+// Adicionando animação de fade-in ao botão
+const botaoGerar = document.getElementById("gerarNome");   
 
 // Adicionando animação de fade-in e efeito glitch
 const style = document.createElement("style");
